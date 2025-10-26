@@ -3,9 +3,13 @@ import './App.css';
 
 function App() {
   return (
-    <Routes>
-      <Route path ="/"/>
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path ="/" element ={<Home />}/>
+        
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
