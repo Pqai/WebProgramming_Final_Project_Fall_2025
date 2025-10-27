@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import logoImage from './placeholder.png';
+import './Header.css';
 
 export const Header = () => {
     
@@ -10,8 +12,8 @@ export const Header = () => {
         <header className ="header">
             <nav className = "header-container">
 
-                <Link to ="/" className="log">
-                    <img src ="placeholder.png" alt="replaceSoon"/>
+                <Link to ="/" className="logo">
+                    <img src ={logoImage} alt="replaceSoon"/>
                     <span className ="logo-text">Bow Valley</span>
                 </Link>
 
