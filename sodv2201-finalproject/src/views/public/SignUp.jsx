@@ -1,166 +1,184 @@
-import React, {useState} from 'react';
-import { useSignUp } from '../../routes/public/signup.component';
+import React from 'react';
 
-//function
+import './SignUp.css';
 
-export const SignUp = () => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        birthday: '',
-        department: 'SD', // Default to SD department
-        program: '',
-        username: '',
-        password: '',
-        confirmPassword: ''
-    });
-
-    const handleChange = (e) => {
-        const {name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    }
-
-    const handleSubmit = (e) => {
-        e.PreventDefault();
-
-        console.log('Form submitted:', formData);
-    }
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-
-    const signUpContext = useSignUp();
-
-    const {userProfiles, setUserProfiles} = signUpContext;
-    //const
-    
-    const handleBirthdaySelect = () => {
-
-    }
-
-
-
+const SignUp = ({ formData, errors, isLoading, onChange, onSubmit }) => {
     return (
-        <div className = "signup-container">
-            <div className = "signup-form">
-                <h1>User Sign Up Form</h1>
-                
-                <form onSubmit = {handleSubmit}>
-                    <h3>Account Information</h3>
-                    <div className ="form-section">
+        <div className="page-container">            
+            <main className="main-content">
+                <div className="signup-container">
+                    <div className="signup-form">
+                        <h1>Student Sign Up</h1>
+                        <p className="subtitle">Join Bow Valley College - Software Development Department</p>
+                        
+                        <form onSubmit={onSubmit}>
+                            {/* Personal Information Section */}
+                            <div className="form-section">
+                                <h3>Personal Information</h3>
+                                
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label htmlFor="firstName">First Name *</label>
+                                        <input
+                                            type="text"
+                                            id="firstName"
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={onChange}
+                                            className={errors.firstName ? 'error' : ''}
+                                        />
+                                        {errors.firstName && <span className="error-message">{errors.firstName}</span>}
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label htmlFor="lastName">Last Name *</label>
+                                        <input
+                                            type="text"
+                                            id="lastName"
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={onChange}
+                                            className={errors.lastName ? 'error' : ''}
+                                        />
+                                        {errors.lastName && <span className="error-message">{errors.lastName}</span>}
+                                    </div>
+                                </div>
 
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type= "text"
-                            id = "username"
-                            name ="username"
-                            value ={formData.username}
-                            onChange={handleChange}
-                            required
-                        />
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label htmlFor="email">Email *</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={onChange}
+                                            className={errors.email ? 'error' : ''}
+                                        />
+                                        {errors.email && <span className="error-message">{errors.email}</span>}
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label htmlFor="phone">Phone Number *</label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={onChange}
+                                            className={errors.phone ? 'error' : ''}
+                                        />
+                                        {errors.phone && <span className="error-message">{errors.phone}</span>}
+                                    </div>
+                                </div>
 
+                                <div className="form-group">
+                                    <label htmlFor="birthday">Birthday *</label>
+                                    <input
+                                        type="date"
+                                        id="birthday"
+                                        name="birthday"
+                                        value={formData.birthday}
+                                        onChange={onChange}
+                                        className={errors.birthday ? 'error' : ''}
+                                    />
+                                    {errors.birthday && <span className="error-message">{errors.birthday}</span>}
+                                </div>
+                            </div>
 
-                    </div>
+                            {/* Academic Information */}
+                            <div className="form-section">
+                                <h3>Academic Information</h3>
+                                
+                                <div className="form-group">
+                                    <label htmlFor="department">Department *</label>
+                                    <select
+                                        id="department"
+                                        name="department"
+                                        value={formData.department}
+                                        onChange={onChange}
+                                    >
+                                        <option value="SD">Software Development (SD)</option>
+                                    </select>
+                                </div>
 
-                    <div className ="form-row">
-                        <div className ="form-group">
-                            <label htmlFor="password">Password</label>
-                        <input
-                            type= "password"
-                            id = "password"
-                            name ="password"
-                            value ={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
-                        </div>
-                    </div>
+                                <div className="form-group">
+                                    <label htmlFor="program">Program *</label>
+                                    <select
+                                        id="program"
+                                        name="program"
+                                        value={formData.program}
+                                        onChange={onChange}
+                                        className={errors.program ? 'error' : ''}
+                                    >
+                                        <option value="">Select a program</option>
+                                        <option value="diploma">Diploma (2 years)</option>
+                                        <option value="post-diploma">Post-Diploma (1 year)</option>
+                                        <option value="certificate">Certificate (6 months)</option>
+                                    </select>
+                                    {errors.program && <span className="error-message">{errors.program}</span>}
+                                </div>
+                            </div>
 
-                    <div className ="form-row">
-                        <div className ="form-group">
-                            <label htmlFor="email">Email</label>
-                        <input
-                            type= "email"
-                            id = "email"
-                            name ="email"
-                            value ={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                        </div>
+                            {/* Account Information */}
+                            <div className="form-section">
+                                <h3>Account Information</h3>
+                                
+                                <div className="form-group">
+                                    <label htmlFor="username">Username *</label>
+                                    <input
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        value={formData.username}
+                                        onChange={onChange}
+                                        className={errors.username ? 'error' : ''}
+                                    />
+                                    {errors.username && <span className="error-message">{errors.username}</span>}
+                                </div>
 
-                        <div className = "form-group">
-                            <label htmlFor ="phone">Phone Number</label>
-                            <input
-                                type ="tel"
-                                id="phone"
-                                name="phone"
-                                vaue={formData.phone}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-                    </div>
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label htmlFor="password">Password *</label>
+                                        <input
+                                            type="password"
+                                            id="password"
+                                            name="password"
+                                            value={formData.password}
+                                            onChange={onChange}
+                                            className={errors.password ? 'error' : ''}
+                                        />
+                                        {errors.password && <span className="error-message">{errors.password}</span>}
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label htmlFor="confirmPassword">Confirm Password *</label>
+                                        <input
+                                            type="password"
+                                            id="confirmPassword"
+                                            name="confirmPassword"
+                                            value={formData.confirmPassword}
+                                            onChange={onChange}
+                                            className={errors.confirmPassword ? 'error' : ''}
+                                        />
+                                        {errors.confirmPassword && <span className="error-message">{errors.confirmPassword}</span>}
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div className = "form-group">
-                        <label htmlFor="birthday">Birthday</label>
-                        <input
-                            type="date"
-                            id="bithday"
-                            name="birthday"
-                            value={formData.birthday}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div className ="form-section">
-                        <h3>School Information</h3>
-
-                        <div className="form-group">
-                            <label htmlFor="department">Department</label>
-                            <select
-                                id="department"
-                                name="department"
-                                value={formData.department}
-                                onChange={handleChange}
-                                required
+                            <button 
+                                type="submit" 
+                                className="submit-btn"
+                                disabled={isLoading}
                             >
-                                <option value="SD">Software Development</option>
-                            </select>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="program">Program</label>
-                            <select
-                                id="program"
-                                name="program"
-                                value={formData.program}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value ="">Select a Program</option>
-                                <option value ="diploma">Diploma (2 years)</option>
-                                <option value ="post-diploma">Post-Diploma (1 year)</option>
-                                <option value ="certificate">Certificate (6 months)</option>
-                            </select>
-                        </div>
+                                {isLoading ? 'Creating Account...' : 'Create Account'}
+                            </button>
+                        </form>
                     </div>
-
-                    <button type="submit" className="submit-btn">
-                        Create Account
-                    </button>
-
-
-
-                </form>
-            </div>
+                </div>
+            </main>
         </div>
     );
 };
+
+export default SignUp;
