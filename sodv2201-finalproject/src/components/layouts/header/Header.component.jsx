@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import logoImage from './placeholder.png';
 import './Header.css';
 
-export const Header = () => {
+ const Header = () => {
     
     const isLoggedIn = false;
     const currentUser = null;
@@ -42,6 +42,8 @@ export const Header = () => {
         </header>
     );
 };
+
+export default Header;
 
 //on the header, access to the home page, acess to your profile must be on there
 //could add more 

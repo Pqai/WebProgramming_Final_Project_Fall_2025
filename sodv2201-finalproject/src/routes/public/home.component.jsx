@@ -1,7 +1,7 @@
 import HomePage from '../../views/public/HomePage';
 
 const Home = () =>{
-    return <HomePage/>
-}
+    return <HomePage />;
+};
 
 export default Home;
