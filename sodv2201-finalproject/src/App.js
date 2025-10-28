@@ -1,8 +1,7 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react';
-//import Home from './routes/public/home.component';
-import Home from './views/public/HomePage';
+import Home from './routes/public/home.component';
 
 function App() {
   return (
