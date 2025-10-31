@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react';
 import Home from './routes/public/home.component';
 import SignUp from './views/public/SignUp';
 import Header from './components/layouts/header/Header.component';
@@ -9,9 +9,14 @@ function App() {
     <div>
       <BrowserRouter>
       <Header/>
+      <nav>
+        <Link to ="/">Home</Link> | {" "}
+        <Link to ="/SignUp">Signup</Link>|{" "}
+      </nav>
+
       <Routes>
         <Route path ="/" element ={<Home />}/>
-        <Route path="/sigunp" element={<SignUp/>}/>
+        <Route path="/SignUp" element={<SignUp/>}/>
       </Routes>
     </BrowserRouter>
 
