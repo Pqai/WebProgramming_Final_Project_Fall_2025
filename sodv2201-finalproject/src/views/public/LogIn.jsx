@@ -2,7 +2,7 @@ import React from 'react';
 
 import './SignUp.css';
 
-const SignUp = ({ formData, errors, isLoading, onChange, onSubmit }) => {
+const Login = ({ formData, errors, isLoading, onChange, onSubmit }) => {
     return (
         <div className="page-container">            
             <main className="main-content">
@@ -181,4 +181,4 @@ const SignUp = ({ formData, errors, isLoading, onChange, onSubmit }) => {
     );
 };
 
-export default SignUp;
+export default Login;

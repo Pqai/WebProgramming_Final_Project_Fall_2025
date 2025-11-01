@@ -42,8 +42,8 @@
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    grid-template-columns: 2fr 2fr;
+    gap: 40px;
 }
 
 .form-group {

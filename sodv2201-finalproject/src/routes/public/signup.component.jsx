@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-
-import SignUp from '../../../views/public/SignUp';
+import SignUp from '../../views/public/SignUp';
 
 const SignUpComponent = () => {
     const [formData, setFormData] = useState({
@@ -9,7 +8,7 @@ const SignUpComponent = () => {
         email: '',
         phone: '',
         birthday: '',
-        department: 'SD',
+        department: 'SD',//because we will only have a software development department
         program: '',
         username: '',
         password: '',
@@ -83,14 +82,12 @@ const SignUpComponent = () => {
             console.log('User created:', newUser);
             alert(`Registration successful! Your Student ID is: ${studentId}`);
             
-            // Reset form
+
             setFormData({
                 firstName: '', lastName: '', email: '', phone: '', birthday: '',
                 department: 'SD', program: '', username: '', password: '', confirmPassword: ''
             });
             
-            // Redirect to login (you can implement this later)
-            // navigate('/login');
             
         } catch (error) {
             console.error('Signup error:', error);
