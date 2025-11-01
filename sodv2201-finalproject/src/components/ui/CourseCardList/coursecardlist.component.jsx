@@ -28,6 +28,7 @@ const CourseCardList = ({courses, title="Available Courses", showFilters =true})
             end_date: "2024-03-20",
             fees: "$449",
             description: "SQL and database architecture fundamentals"
+            //to be moved into backend later
         }
     ];
 
