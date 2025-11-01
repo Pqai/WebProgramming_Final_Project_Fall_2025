@@ -29,17 +29,14 @@
   transform: scale(1.05);
 }
 
-.logo-image{
-  font-size: 2rem;
-  margin-right: 0.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 50%;
-  width: 40px;
+.logo img {
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  border-radius: 8px;
 }
+
 
 .logo-text{
   background: linear-gradient(135deg, #fff, #ecf0f1);
