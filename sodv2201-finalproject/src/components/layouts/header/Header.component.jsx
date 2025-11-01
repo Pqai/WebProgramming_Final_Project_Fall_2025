@@ -6,7 +6,7 @@ import './Header.css';
 
 const Header = () => {
     
-    const isLoggedIn = false;
+    const isLoggedIn = false;//hiding specific buttons depending if you are logged in or not
     const currentUser = null;
 
     return (

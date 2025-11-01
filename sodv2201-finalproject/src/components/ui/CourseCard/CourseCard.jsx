@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "react-modal";
+//import Modal from "react-modal";
 import './CourseCard.css';
 
 const CourseCard = ({course}) => {

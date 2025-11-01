@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseCard from './CourseCard';
+import CourseCard from '../CourseCard/CourseCard';
 import './CourseCardList.css'
 
 const CourseCardList = ({courses, title="Available Courses", showFilters =true}) => {
