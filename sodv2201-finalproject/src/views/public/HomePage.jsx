@@ -10,4 +10,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-//finish this later
