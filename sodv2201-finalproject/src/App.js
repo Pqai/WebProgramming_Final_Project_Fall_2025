@@ -6,6 +6,7 @@ import SignUpComponent from './routes/public/signup.component';
 import Header from './components/layouts/header/Header.component';
 import ViewCoursesPage from './views/student/ViewCourses';
 
+
 function App() {
   return (
     <div>
