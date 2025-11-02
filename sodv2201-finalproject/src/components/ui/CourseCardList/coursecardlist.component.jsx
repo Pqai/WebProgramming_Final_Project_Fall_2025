@@ -1,5 +1,6 @@
 import React from 'react';
 import CourseCard from '../CourseCard/CourseCard';
+import SearchBar from "../SearchBar/SearchBar";
 import './CourseCardList.css'
 
 const CourseCardList = ({courses, title="Available Courses", showFilters =true}) => {
