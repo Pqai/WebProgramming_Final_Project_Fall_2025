@@ -32,18 +32,27 @@ const CourseCardList = ({courses, title="Available Courses", showFilters =true})
         }
     ];
 
-    const displayCourses = courses || exampleCourses;
+     const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("all");
+
+  const handleSearch = (query, filter) => {
+    setSearchQuery(query);
+    setSelectedFilter(filter);
+  };
+         const displayCourses = (courses || exampleCourses).filter((course) => {
+    const matchesQuery = course.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesFilter =
+      selectedFilter === "all" ||
+      course.level === selectedFilter ||
+      course.category === selectedFilter;
+    return matchesQuery && matchesFilter;
+  });
 
     return(
         <div className="course-list-container">
             <h1 className="course-list-title">{title}</h1>
             
-            {showFilters && (
-                <div className="filters">
-                    {/* Add filter controls here later */}
-                    <p>Filters coming soon...</p>
-                </div>
-            )}
+           {showFilters && <SearchBar onSearch={handleSearch} />}
             
             <div className="courses-grid">
                 {displayCourses.map(course => (
