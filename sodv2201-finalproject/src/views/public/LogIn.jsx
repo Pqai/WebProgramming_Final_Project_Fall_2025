@@ -29,20 +29,19 @@ const Login = ({ loginData, errors, isLoading, onChange, onSubmit }) => {
                                     {errors.username && <span className="error-message">{errors.username}</span>}
                                 </div>
 
-                                <div className="form-row">
-                                    <div className="form-group">
-                                        <label htmlFor="password">Password</label>
-                                        <input
-                                            type="password"
-                                            id="password"
-                                            name="password"
-                                            value={loginData.password}
-                                            onChange={onChange}
-                                            className={errors.password ? 'error' : ''}
-                                        />
-                                        {errors.password && <span className="error-message">{errors.password}</span>}
-                                    </div>
+                                <div className="form-group">
+                                    <label htmlFor="password">Password</label>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        value={loginData.password}
+                                        onChange={onChange}
+                                        className={errors.password ? 'error' : ''}
+                                    />
+                                    {errors.password && <span className="error-message">{errors.password}</span>}
                                 </div>
+                                
                             </div>
 
                             <button 
