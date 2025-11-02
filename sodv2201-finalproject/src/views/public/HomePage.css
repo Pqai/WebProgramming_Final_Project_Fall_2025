@@ -27,6 +27,10 @@
 }
 
 .mainPage-container{
-    border: 5px outset black;
+    border: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     text-align:center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
 }

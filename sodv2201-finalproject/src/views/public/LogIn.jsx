@@ -2,7 +2,7 @@ import React from 'react';
 
 import './SignUp.css';
 
-const Login = ({ formData, errors, isLoading, onChange, onSubmit }) => {
+const Login = ({ loginData, errors, isLoading, onChange, onSubmit }) => {
     return (
         <div className="page-container">            
             <main className="main-content">
@@ -22,7 +22,7 @@ const Login = ({ formData, errors, isLoading, onChange, onSubmit }) => {
                                         type="text"
                                         id="username"
                                         name="username"
-                                        value={formData.username}
+                                        value={loginData.username}
                                         onChange={onChange}
                                         className={errors.username ? 'error' : ''}
                                     />
@@ -36,7 +36,7 @@ const Login = ({ formData, errors, isLoading, onChange, onSubmit }) => {
                                             type="password"
                                             id="password"
                                             name="password"
-                                            value={formData.password}
+                                            value={loginData.password}
                                             onChange={onChange}
                                             className={errors.password ? 'error' : ''}
                                         />

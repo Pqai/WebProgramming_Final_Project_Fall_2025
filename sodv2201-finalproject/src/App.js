@@ -5,6 +5,7 @@ import Home from './routes/public/home.component';
 import SignUpComponent from './routes/public/signup.component';
 import Header from './components/layouts/header/Header.component';
 import ViewCoursesPage from './views/student/ViewCourses';
+import LoginComponent from './routes/public/login.component';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path ="/" element ={<Home />}/>
         <Route path ="/courses" element={<ViewCoursesPage />}/>
         <Route path="/SignUp" element={<SignUpComponent/>}/>
+        <Route path="/LogIn" element={<LoginComponent/>}/>
       </Routes>
     </BrowserRouter>
 

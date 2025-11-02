@@ -13,7 +13,7 @@ const LoginComponent = () => {
 
     const handleChange = (e) =>{
     const { name, value } = e.target;
-        setFormData(prev => ({
+        setLoginData(prev => ({
             ...prev,
             [name]: value
         }));
@@ -29,9 +29,9 @@ const LoginComponent = () => {
         const validateForm = () => {
         const newErrors = {};
 
-        if (!formData.username.trim()) newErrors.username = 'Username is required';
-        if (!formData.password) newErrors.password = 'Password is required';
-        if (formData.password !== formData.confirmPassword) {//make this connect to the backend later
+        if (!loginData.username.trim()) newErrors.username = 'Username is required';
+        if (!loginData.password) newErrors.password = 'Password is required';
+        if (loginData.password !== loginData.confirmPassword) {//make this connect to the backend later
             newErrors.confirmPassword = 'Passwords do not match';
         }
 
@@ -52,27 +52,26 @@ const LoginComponent = () => {
         try {
             // Simulate API call
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            const studentId = generateStudentId(formData.program);
-            
-            const newUser = {
-                ...formData,
-                studentId,
+                        
+            const logIn = { //logIn
+                ...loginData,
+                //studentId,
                 role: 'student',
-                createdAt: new Date().toISOString()
+                loggedInAt: new Date().toISOString()
             };
             
             // Save to localStorage
             const existingUsers = JSON.parse(localStorage.getItem('bowValleyUsers') || '[]');
-            localStorage.setItem('bowValleyUsers', JSON.stringify([...existingUsers, newUser]));
+            localStorage.setItem('bowValleyUsers', JSON.stringify([...existingUsers, logIn]));
             
-            console.log('User created:', newUser);
-            alert(`Registration successful! Your Student ID is: ${studentId}`);
+            console.log('User Logged in:', logIn);
+            //alert(`Registration successful! Your Student ID is: ${studentId}`);
+            alert(`Logging in successful user logged in is${loginData.username}`);
+
             
 
-            setFormData({
-                firstName: '', lastName: '', email: '', phone: '', birthday: '',
-                department: 'SD', program: '', username: '', password: '', confirmPassword: ''
+            setLoginData({
+                username: '', password: ''
             });
             
             
