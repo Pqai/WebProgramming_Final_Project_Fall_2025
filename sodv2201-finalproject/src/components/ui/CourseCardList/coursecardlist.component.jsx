@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import CourseCard from '../CourseCard/CourseCard';
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from '../SearchBar/searchbar.component';
 import './CourseCardList.css'
 
 const CourseCardList = ({courses, title="Available Courses", showFilters =true}) => {
@@ -33,8 +33,8 @@ const CourseCardList = ({courses, title="Available Courses", showFilters =true})
         }
     ];
 
-     const [searchQuery, setSearchQuery] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("all");
+     const [searchQuery, setSearchQuery] = useState('');
+     const [selectedFilter, setSelectedFilter] = useState('all');
 
   const handleSearch = (query, filter) => {
     setSearchQuery(query);
