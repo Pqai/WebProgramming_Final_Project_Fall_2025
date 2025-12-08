@@ -15,9 +15,35 @@ export async function createUser(user){
         .input('program', sql.VarChar(50), user.program)
         .input('username', sql.VarChar(50), user.username)
         .input('passwordHash', sql.VarChar(255), user.password)//to implement later so i cant see password in postman mkae it hashed
-        .query("INSERT INTO USERS (firstName, lastName, email, phone, birthday, department, program, username, password, confirmPassword) VALUES (@firstName, @lastName, @email, @phone, @birthday, @department, @program, @username, @passsword, )")
-
+        .query("INSERT INTO USERS (firstName, lastName, email, phone, birthday, department, program, username, passwordHash,) VALUES (@firstName, @lastName, @email, @phone, @birthday, @department, @program, @username, @passsword, )")
+    
+        return result.rowsAffected[0];
     } catch(error){
+        if(error.number === 2627){
+            throw new Error("User with this username or email already exists");
+        }
+        throw new Error("Failed t ocreate user: " + error.message);
+    }
+}
 
+export async function getAllCourses(){
+       const pool = await poolPromise;
+    try{
+        const result = await pool
+        .request()
+        .query("SELECT * FROM Courses")
+    }catch(error){
+        throw new Error("Failed to fetch courses: " + error.message);
+    }
+}
+
+export async function addCourses(){
+       const pool = await poolPromise;
+    try{
+        const result = await pool
+        .request()
+        .input("")
+    }catch(error){
+        throw new Error("Failed to fetch courses: " + error.message);
     }
 }
