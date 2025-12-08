@@ -47,3 +47,14 @@ export async function addCourses(){
         throw new Error("Failed to fetch courses: " + error.message);
     }
 }
+
+export async function deleteCourses(courseId){
+       const pool = await poolPromise;
+    try{
+        const result = await pool
+        .request()
+        .input('courseId', )
+    }catch(error){
+        throw new Error("Failed to fetch courses: " + error.message);
+    }
+}

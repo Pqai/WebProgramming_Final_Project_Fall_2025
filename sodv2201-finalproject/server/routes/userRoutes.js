@@ -1,6 +1,9 @@
 import express from 'express';
-import { createUser } from '../models/userModel';
+import { addCourses, createUser, deleteCourses, getAllCourses } from '../models/userModel';
 
 const router = express.Router();
 
-router.get('', createUser)
+router.post('/users', createUser);
+router.post('/courses', addCourses);
+router.get('/courses', getAllCourses);
+router.delete('/courses/:id', deleteCourses);
