@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-//import logoImage from '../../placeholder.png';
 import logoImage from './placeholder.png';
 import './Header.css';
 
