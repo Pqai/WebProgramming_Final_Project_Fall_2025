@@ -15,7 +15,8 @@ export async function createUser(user){
         .input('program', sql.VarChar(50), user.program)
         .input('username', sql.VarChar(50), user.username)
         .input('passwordHash', sql.VarChar(255), user.password)//to implement later so i cant see password in postman mkae it hashed
-        .query("INSERT INTO USERS (first_Name, last_Name, email, phone, birthday, department, program, username, password_Hash,) VALUES (@firstName, @lastName, @email, @phone, @birthday, @department, @program, @username, @passsword, )")
+        .query(`INSERT INTO USERS (first_Name, last_Name, email, phone, birthday, department, program, username, password_Hash) 
+            VALUES (@firstName, @lastName, @email, @phone, @birthday, @department, @program, @username, @passsword, )`);
     
         return result.rowsAffected[0];
     } catch(error){
@@ -53,7 +54,8 @@ export async function addCourses(course){
         .input('maxStudents', sql.Int, course.maxStudents || 30)
         .input('instructor', sql.VarChar(100), course.instructor)
         .input('createdBy', sql.Int, course.createdBy)
-        .query("INSERT INTO Courses (course_code, course_name, program_id, term, start_date, end_date, description, credits, fees, max_students, instructor, created_by) VALUES (@courseCode, @name @programId, @term, @startDate, @endDate, @description, @credits, @fees, @maxStudents, @instructor, @createdBy)");
+        .query(`INSERT INTO Courses (course_code, course_name, program_id, term, start_date, end_date, description, credits, fees, max_students, instructor, created_by) 
+            VALUES (@courseCode, @name @programId, @term, @startDate, @endDate, @description, @credits, @fees, @maxStudents, @instructor, @createdBy)`);
         
         return result.recordset[0];
     }catch(error){
@@ -74,12 +76,13 @@ export async function deleteCourses(courseId){
     }
 }
 
-export async function createMessage(){
+export async function createMessage(message){
     const pool = await poolPromise;
     try{
         const result = await pool
         .request()
-        .input()
+        .input('studentId', sql.Int, message.StudentId)
+
     }catch(error){
         
     }
