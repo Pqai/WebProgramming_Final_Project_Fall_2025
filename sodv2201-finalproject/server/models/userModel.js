@@ -82,8 +82,21 @@ export async function createMessage(message){
         const result = await pool
         .request()
         .input('studentId', sql.Int, message.StudentId)
-
+        .input("studentId", sql.Int, message.studentId)
+        .input("studentName", sql.VarChar, message.studentName)
+        .input("staffId", sql.Int, message.staffId)
+        .input("staffName", sql.VarChar, message.staffName)
+        .input("subject", sql.VarChar, message.subject)
+        .input("content", sql.Text, message.content)
+        .input("status", sql.VarChar, "unread") // unread, read, replied
+        .input("createdAt", sql.DateTime, new Date())
+        .query(`
+            INSERT INTO Messages (studentId, studetName, staffId, staffName, subject, content, status, createdAt)
+            VALUES
+            (@studentId, @studentNae, @staffId, @staffName, @subject, @content, @status, @createdAt) 
+            `)
+            return result.recordset[0];
     }catch(error){
-        
+        throw new Error("Failed to create a message: " + error.message);
     }
 }
